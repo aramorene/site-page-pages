@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>江南体育 · 站点信息与知识索引</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans SC", Arial, sans-serif;
+            background-color: #f5f7fa;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        /* 深色头图 */
+        .hero {
+            background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%);
+            color: #e2e8f0;
+            padding: 4rem 2rem 3rem;
+            text-align: center;
+            border-bottom: 3px solid #fbbf24;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            color: #f8fafc;
+        }
+
+        .hero .sub {
+            font-size: 1.1rem;
+            color: #94a3b8;
+            max-width: 640px;
+            margin: 0.4rem auto 1.6rem;
+        }
+
+        .hero .badge {
+            display: inline-block;
+            background: #fbbf24;
+            color: #0f172a;
+            font-weight: 600;
+            font-size: 0.85rem;
+            padding: 0.4rem 1.2rem;
+            border-radius: 30px;
+            letter-spacing: 0.5px;
+            margin-top: 0.2rem;
+        }
+
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 2.4rem 1.6rem 3.6rem;
+        }
+
+        /* 卡片通用 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+            margin: 2rem 0 1.2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.6rem 1.8rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.03);
+            border: 1px solid #e9edf2;
+            transition: box-shadow 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.6rem;
+            color: #0f172a;
+            border-left: 4px solid #fbbf24;
+            padding-left: 0.7rem;
+        }
+
+        .card p, .card li {
+            font-size: 0.95rem;
+            color: #334155;
+            margin-bottom: 0.4rem;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card ul li::before {
+            content: "▹ ";
+            color: #fbbf24;
+            font-weight: 600;
+        }
+
+        /* 说明区（主介绍） */
+        .intro-block {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem 2.4rem;
+            margin: 2rem 0 1.8rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            border: 1px solid #eef2f6;
+        }
+
+        .intro-block p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .intro-block strong {
+            color: #0f172a;
+        }
+
+        .highlight-link {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .highlight-link:hover {
+            border-bottom-color: #2563eb;
+        }
+
+        .accent-bg {
+            background: #fef9e7;
+            border-left: 4px solid #fbbf24;
+            padding: 1.2rem 1.8rem;
+            border-radius: 12px;
+            margin: 1.4rem 0;
+        }
+
+        .accent-bg p {
+            margin: 0.2rem 0;
+        }
+
+        .info-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 1.6rem 0 0.6rem;
+        }
+
+        .info-item {
+            flex: 1 1 180px;
+            background: #f8fafc;
+            padding: 1rem 1.4rem;
+            border-radius: 14px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .info-item .label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #64748b;
+            display: block;
+        }
+
+        .info-item .value {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 0.2rem;
+            color: #0f172a;
+        }
+
+        .faq-preview {
+            margin: 2.6rem 0 0.8rem;
+        }
+
+        .faq-item {
+            padding: 0.8rem 0;
+            border-bottom: 1px dashed #d1d9e6;
+        }
+
+        .faq-item:last-child {
+            border-bottom: 0;
+        }
+
+        .faq-q {
+            font-weight: 600;
+            color: #0f172a;
+        }
+
+        .faq-a {
+            color: #475569;
+            font-size: 0.95rem;
+            margin-top: 0.2rem;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.6rem;
+            border-top: 1px solid #dce2ec;
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        .btn-ghost {
+            display: inline-block;
+            margin: 0.6rem 0;
+            background: transparent;
+            border: 1px solid #cbd5e1;
+            color: #1e293b;
+            padding: 0.4rem 1rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .btn-ghost:hover {
+            background: #f1f5f9;
+            border-color: #94a3b8;
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2rem; }
+            .intro-block { padding: 1.6rem; }
+            .card { padding: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 深色头图 -->
+    <header class="hero">
+        <h1>江南体育</h1>
+        <div class="sub">站点信息 · 可信指引 · 内容索引</div>
+        <div class="badge">知识库入口 · 持续更新</div>
+    </header>
+
+    <main class="container">
+
+        <!-- 介绍与可信说明 -->
+        <div class="intro-block">
+            <p><strong>江南体育</strong> 是一个以体育资讯、赛事数据与用户互动为核心的服务站点。本站点致力于提供结构化的信息索引与参考内容，所有公开数据均来自可查来源，并定期复核关键信息。运营团队具备长期维护经验，保证基础信息的真实性与可追溯性。</p>
+            <p>如果您希望直接访问服务主站，可前往 <a href="https://webs-jnsports.com" class="highlight-link">江南体育</a> 获取更多功能模块与实时内容。本介绍页作为知识库入口，集中展示站点结构、常见问题与可信参考，方便新用户快速建立认知。</p>
+            <div class="accent-bg">
+                <p>📍 重要说明：本页面仅用于信息展示与引导，不涉及任何形式的投注、竞价或违规内容。所有链接均指向官方运营站点。</p>
+            </div>
+        </div>
+
+        <!-- 卡片区域：内容索引 -->
+        <div class="card-grid">
+            <div class="card">
+                <h3>📋 站点目录</h3>
+                <ul>
+                    <li>赛事数据与比分追踪</li>
+                    <li>运动项目分类索引</li>
+                    <li>社区动态与用户专栏</li>
+                    <li>规则说明与帮助中心</li>
+                </ul>
+                <p style="margin-top:0.6rem;font-size:0.9rem;">通过主站导航可快速定位上述模块。</p>
+            </div>
+            <div class="card">
+                <h3>🔍 可信参考</h3>
+                <ul>
+                    <li>公开数据接口说明</li>
+                    <li>历史更新日志摘要</li>
+                    <li>第三方数据验证途径</li>
+                    <li>运营主体备案信息</li>
+                </ul>
+                <p style="margin-top:0.6rem;font-size:0.9rem;">建议结合官方公告交叉核对。</p>
+            </div>
+            <div class="card">
+                <h3>💡 使用提示</h3>
+                <ul>
+                    <li>部分功能需注册账号</li>
+                    <li>移动端适配良好</li>
+                    <li>内容检索支持关键词</li>
+                    <li>反馈渠道：站内表单</li>
+                </ul>
+                <p style="margin-top:0.6rem;font-size:0.9rem;">遇到问题可先查阅帮助文档。</p>
+            </div>
+        </div>
+
+        <!-- 相关信息区：结构化数据 -->
+        <div class="info-row">
+            <div class="info-item">
+                <span class="label">站点类型</span>
+                <div class="value">体育信息</div>
+            </div>
+            <div class="info-item">
+                <span class="label">主要语言</span>
+                <div class="value">中文</div>
+            </div>
+            <div class="info-item">
+                <span class="label">更新频率</span>
+                <div class="value">每日</div>
+            </div>
+            <div class="info-item">
+                <span class="label">内容审核</span>
+                <div class="value">人工+自动</div>
+            </div>
+        </div>
+
+        <!-- FAQ 摘要区 -->
+        <div class="faq-preview">
+            <h3 style="font-weight:600; font-size:1.2rem; margin-bottom:0.8rem; color:#0f172a;">❓ 常见问题摘要</h3>
+            <div class="faq-item">
+                <div class="faq-q">如何确认信息的准确性？</div>
+                <div class="faq-a">站点内标注「参考来源」的内容均附有链接或说明，同时建议用户对比多个数据源。如有疑义可通过站内反馈提交复核。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">江南体育是否提供实时比分？</div>
+                <div class="faq-a">主站设有专门的比分模块，数据延迟控制在合理范围内。具体刷新策略请参考功能说明页。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">是否需要注册才能浏览全部内容？</div>
+                <div class="faq-a">大部分信息类内容对访客开放，部分互动功能或个性化设置需要注册账号。注册流程简单且不收取费用。</div>
+            </div>
+            <div style="margin-top:1rem;">
+                <a href="https://webs-jnsports.com" class="btn-ghost">江南体育</a>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            <p>本知识库入口由站点运营方维护，内容仅供参考。主站地址：<a href="https://webs-jnsports.com" class="highlight-link">江南体育</a> · 版本 2025.04</p>
+            <p style="margin-top:0.3rem;">建议使用现代浏览器访问以获得最佳体验。</p>
+        </div>
+
+    </main>
+
+</body>
+</html>
